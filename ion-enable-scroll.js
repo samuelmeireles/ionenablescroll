@@ -17,12 +17,11 @@ angular.module('ionic.enablescroll', ['ionic']).directive('ionEnableScroll', fun
     link: function (scope, element, attrs) {
       var scrollView = $ionicScrollDelegate.getScrollView(scope);
       element.bind("keydown keypress", function (event) {
-        event.preventDefault();
         switch (event.which) {
-          case 38: scrollUp(scrollView); break;
-          case 40: scrollDown(scrollView); break;
-          case 33: pageUp(scrollView); break;
-          case 34: pageDown(scrollView); break;
+          case 38: event.preventDefault(); scrollUp(scrollView); break;
+          case 40: event.preventDefault(); scrollDown(scrollView); break;
+          case 33: event.preventDefault(); pageUp(scrollView); break;
+          case 34: event.preventDefault(); pageDown(scrollView); break;
         }
       });
       element[0].focus();
